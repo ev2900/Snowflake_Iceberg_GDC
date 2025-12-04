@@ -11,6 +11,3 @@
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=snowflake-iceberg-gdc&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iceberg_gdc.yaml)
 
-Update stack
-
-[![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=snowflake-iceberg-gdc&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iam_role_update.yaml)

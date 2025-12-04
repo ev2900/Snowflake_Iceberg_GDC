@@ -30,3 +30,6 @@ jobs:
           
       - name: Upload glue_iceberg_register_table.yaml to S3
         run: aws s3 cp /home/runner/work/Snowflake_Iceberg_GDC/Snowflake_Iceberg_GDC/snowflake_iceberg_gdc.yaml s3://sharkech-public/misc-public/snowflake_iceberg_gdc.yaml
+
+      - name: Upload snowflake_iam_role_update.yaml to S3
+        run: aws s3 cp /home/runner/work/Snowflake_Iceberg_GDC/Snowflake_Iceberg_GDC/snowflake_iam_role_update.yaml s3://sharkech-public/misc-public/snowflake_iam_role_update.yaml        

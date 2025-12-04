@@ -233,34 +233,31 @@ Resources:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
-          Version: "2012-10-17"
-      Statement:
-        - Effect: Allow
-          Principal:
-            Service: glue.amazonaws.com
-          Action: sts:AssumeRole
-        - Effect: Allow
-          Principal:
-            AWS: "<>"
-          Action: sts:AssumeRole
-          Condition:
-            StringEquals:
-              sts:ExternalId: "<>"
-        - Effect: Allow
-          Principal:
-            AWS: "<>"
-          Action: sts:AssumeRole
-          Condition:
-            StringEquals:
-              sts:ExternalId: "<>"
+          - Effect: Allow
+            Principal:
+              Service: glue.amazonaws.com
+            Action: sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              AWS: "<>" # replace with 
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: "<>" # replace with
+          - Effect: Allow
+            Principal:
+              AWS: "<>"          # replace with 
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: "<>"   # replace with 
       Policies:
-        # Imporvement required - premissions need to be scoped down
         - PolicyName: Admin
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
-                Action: 
+                Action:
                   - '*'
                 Resource: '*'
 

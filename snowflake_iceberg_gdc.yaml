@@ -223,3 +223,48 @@ Resources:
       NumberOfWorkers: 2
       WorkerType: 'G.1X'
       Timeout: 2880
+
+  #
+  # Snowflake IAM Role
+  # 
+  SnowflakeIAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Version: "2012-10-17"
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service: glue.amazonaws.com
+          Action: sts:AssumeRole
+        - Effect: Allow
+          Principal:
+            AWS: <>
+          Action: sts:AssumeRole
+          Condition:
+            StringEquals:
+              sts:ExternalId: "<>"
+        - Effect: Allow
+          Principal:
+            AWS: <>
+          Action: sts:AssumeRole
+          Condition:
+            StringEquals:
+              sts:ExternalId: "<>"
+      Policies:
+        # Imporvement required - premissions need to be scoped down
+        - PolicyName: Admin
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - '*'
+                Resource: '*'
+
+Outputs:
+  SnowflakeIAMRoleArn:
+    Description: ARN of the Snowflake IAM Role
+    Value: !GetAtt SnowflakeIAMRole.Arn

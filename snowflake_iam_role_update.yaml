@@ -1,0 +1,55 @@
+Description: CloudFormation stack update for the Snowflake IAM role
+Parameters:
+  StorageAwsIamUserArn:
+    Type: String
+    Description: STORAGE_AWS_IAM_USER_ARN
+
+  StorageAwsExternalId:
+    Type: String
+    Description: STORAGE_AWS_EXTERNAL_ID
+
+  GlueAwsIamUserArn:
+    Type: String
+    Description: GLUE_AWS_IAM_USER_ARN
+
+  GlueAwsExternalId:
+    Type: String
+    Description: STORAGE_AWS_EXTERNAL_ID
+Resources:
+  #
+  # Snowflake IAM Role
+  # 
+  SnowflakeIAMRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: glue.amazonaws.com
+              Action: sts:AssumeRole
+  
+            - Effect: Allow
+              Principal:
+                AWS: !Ref StorageAwsIamUserArn
+              Action: sts:AssumeRole
+              Condition:
+                StringEquals:
+                  sts:ExternalId: !Ref StorageAwsExternalId
+  
+            - Effect: Allow
+              Principal:
+                AWS: !Ref GlueAwsIamUserArn
+              Action: sts:AssumeRole
+              Condition:
+                StringEquals:
+                  sts:ExternalId: !Ref GlueAwsExternalId
+        Policies:
+          - PolicyName: Admin
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action: '*'
+                  Resource: '*'

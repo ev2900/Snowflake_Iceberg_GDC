@@ -266,7 +266,7 @@ Outputs:
     Description: STORAGE_AWS_ROLE_ARN when creating the external volume
     Value: !GetAtt SnowflakeIAMRole.Arn
 
-  StorageBaseUrl:
+  StorageBaseUri:
     Description: Use this for STORAGE_BASE_URL when creating the external volume
     Value: !Join 
       - ''

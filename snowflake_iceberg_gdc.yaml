@@ -262,11 +262,11 @@ Resources:
                 Resource: '*'
 
 Outputs:
-  STORAGE-AWS-ROLE-ARN:
+  StorageAwsRoleArn:
     Description: STORAGE_AWS_ROLE_ARN when creating the external volume
     Value: !GetAtt SnowflakeIAMRole.Arn
 
-  STORAGE-BASE-URL:
+  StorageBaseUrl:
     Description: Use this for STORAGE_BASE_URL when creating the external volume
     Value: !Join 
       - ''
@@ -274,10 +274,10 @@ Outputs:
         - !Ref S3
         - '/iceberg/'
 
-  GLUE-AWS-ROLE-ARN:
+  GlueAwsRoleArn:
     Description: GLUE_AWS_ROLE_ARN when creating the catalog intergration
     Value: !GetAtt SnowflakeIAMRole.Arn
 
-  GLUE-CATALOG-ID:
+  GlueCatalogId:
     Description: GLUE_CATALOG_ID when creating the catalog intergration
     Value: !Ref AWS::AccountId

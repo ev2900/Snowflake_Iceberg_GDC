@@ -241,14 +241,14 @@ Resources:
           Action: sts:AssumeRole
         - Effect: Allow
           Principal:
-            AWS: <>
+            AWS: "<>"
           Action: sts:AssumeRole
           Condition:
             StringEquals:
               sts:ExternalId: "<>"
         - Effect: Allow
           Principal:
-            AWS: <>
+            AWS: "<>"
           Action: sts:AssumeRole
           Condition:
             StringEquals:

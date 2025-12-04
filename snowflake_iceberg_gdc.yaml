@@ -239,14 +239,14 @@ Resources:
             Action: sts:AssumeRole
           - Effect: Allow
             Principal:
-              AWS: "arn:aws:iam::111111111111:root" # replace with 
+              AWS: "arn:aws:iam::535002871755:root" # replace with 
             Action: sts:AssumeRole
             Condition:
               StringEquals:
                 sts:ExternalId: "PLACEHOLDER" # replace with
           - Effect: Allow
             Principal:
-              AWS: "arn:aws:iam::111111111111:root"          # replace with 
+              AWS: "arn:aws:iam::535002871755:root"          # replace with 
             Action: sts:AssumeRole
             Condition:
               StringEquals:

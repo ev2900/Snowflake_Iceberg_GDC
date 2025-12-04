@@ -71,6 +71,60 @@ SHOW CATALOG INTEGRATIONS;
 
 ### Update IAM role allowing Snowflake to assume it
 
+Before you can use the external volume and catalog integration you just create to create an external table definition pointed at the Glue data catalog Iceberg table, you need to update the IAM role Snowflake will use. Specifically, you need to update the role so Snowflake can assume it.
 
+To updae the IAM role you will deploy a stack update to the CloudFormation tempalte.
+
+Begin by selecting the CloudFormation stack and then *Update stack*, *Make a direct update*
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cf_update_1.png">
+
+Then select *Replace existing tempalte* and copy paste the following S3 URL 
+
+```https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iam_role_update.yaml```
+
+On the next page you will be asked for several inputs. Run the following SQL in Snowflake to get each input paramater
+
+**GLUE_AWS_EXTERNAL_ID**
+```
+-- Step 3 | Get GLUE_AWS_EXTERNAL_ID to update IAM role
+DESC CATALOG INTEGRATION CAT_INT_GDC;
+
+SELECT
+    "property",
+    "property_value" as glue_aws_external_id
+FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
+WHERE "property" = 'GLUE_AWS_EXTERNAL_ID'
+```
+
+**GLUE_AWS_IAM_USER_ARN**
+```
+-- Step 4 | Get GLUE_AWS_IAM_USER_ARN to update IAM role
+DESC CATALOG INTEGRATION CAT_INT_GDC;
+
+SELECT 
+    "property",
+    "property_value" as glue_aws_iam_user_arn
+FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
+WHERE "property" = 'GLUE_AWS_IAM_USER_ARN'
+```
+
+**STORAGE_AWS_EXTERNAL_ID and STORAGE_AWS_IAM_USER_ARN**
+```
+-- Step 5 | Get STORAGE_AWS_EXTERNAL_ID and STORAGE_AWS_IAM_USER_ARN to update IAM role
+DESC EXTERNAL VOLUME EXT_VOL_GDC_S3;
+
+SELECT
+   parse_json("property_value"):STORAGE_AWS_EXTERNAL_ID::string AS storage_aws_external_id,
+	parse_json("property_value"):STORAGE_AWS_IAM_USER_ARN::string AS storage_aws_iam_user_arn
+FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
+WHERE "property" = 'STORAGE_LOCATION_1';
+```
+
+The parameters page on the CloudFormation stack update should look like this 
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cf_update_2.png">
+
+Continue clicking *Next* and *Submit*
 
 ### Create external table definition in Snowflake

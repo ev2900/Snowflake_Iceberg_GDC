@@ -128,3 +128,16 @@ The parameters page on the CloudFormation stack update should look like this
 Continue clicking *Next* and *Submit*
 
 ### Create external table definition in Snowflake
+
+You can now create a table defition using the external volume and catalog intergration
+
+```
+-- Step 6 | Create the table in Snowflake
+CREATE OR REPLACE ICEBERG TABLE SAMPLEDATAICEBERGTABLE
+  EXTERNAL_VOLUME='EXT_VOL_GDC_S3'
+  CATALOG='CAT_INT_GDC'
+  CATALOG_TABLE_NAME='sampledataicebergtable';
+
+-- Optional query the table
+SELECT * FROM SAMPLEDATAICEBERGTABLE LIMIT 10;
+```

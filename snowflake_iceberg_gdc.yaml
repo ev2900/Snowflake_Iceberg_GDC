@@ -198,7 +198,7 @@ Resources:
   IcebergGlueJob:
     Type: 'AWS::Glue::Job'
     Properties:
-      Name: '0 Create Iceberg Table'
+      Name: 'Create Iceberg Table'
       Role: !GetAtt GlueExecutionRole.Arn
       Command:
         Name: 'glueetl'

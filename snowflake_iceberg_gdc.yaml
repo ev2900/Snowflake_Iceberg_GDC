@@ -281,3 +281,7 @@ Outputs:
   GlueCatalogId:
     Description: GLUE_CATALOG_ID when creating the catalog intergration
     Value: !Ref AWS::AccountId
+
+  Region:
+    Description: AWS Region where this stack is deployed
+    Value: !Ref AWS::Region

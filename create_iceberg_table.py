@@ -43,7 +43,7 @@ inputDf = spark.createDataFrame(data=data,schema=schema)
 inputDf.createOrReplaceTempView("tmp_inputDf")
 
 query_1 = f"""
-CREATE TABLE glue_catalog.iceberg.SAMPLEDATA_ICEBERG_GDC
+CREATE TABLE glue_catalog.iceberg.sampledata_iceberg_gdc
 USING iceberg
 TBLPROPERTIES ("format-version"="2")
 AS SELECT * FROM tmp_inputDf
@@ -52,7 +52,7 @@ AS SELECT * FROM tmp_inputDf
 spark.sql(query_1)
 
 # Read sample data 
-query = f"""SELECT * FROM glue_catalog.iceberg.SAMPLEDATA_ICEBERG_GDC"""
+query = f"""SELECT * FROM glue_catalog.iceberg.sampledata_iceberg_gdc"""
 
 #resultsDf = spark.sql(query)
 #resultsDf.show()
@@ -82,7 +82,7 @@ mergeDF = spark.createDataFrame(data=data,schema=schema)
 mergeDF.createOrReplaceTempView("mergeTable")
 
 query_2 = f"""MERGE INTO 
-        glue_catalog.iceberg.SAMPLEDATA_ICEBERG_GDC t 
+        glue_catalog.iceberg.sampledata_iceberg_gdc t 
     USING 
         (SELECT * FROM mergeTable) s 
     ON 

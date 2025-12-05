@@ -51,7 +51,7 @@ SHOW EXTERNAL VOLUMES;
 
 ### Create a catalog integration in Snowflake
 
-Update the run the following SQL in Snowflake. 
+Update and run the following SQL in Snowflake. 
 
 The values of any of the <...> place holders can be found in the output section of the CloudFormation stack
 

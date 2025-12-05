@@ -102,7 +102,7 @@ Resources:
                 # Glue Job Script
                 copy_source = {
                   'Bucket': 'sharkech-public',
-                  'Key': 'misc-public/0_create_iceberg_table.py'
+                  'Key': 'misc-public/create_iceberg_table.py'
                 }
   
                 s3.copy_object(CopySource = copy_source, Bucket = os.environ['S3_BUCKET_NAME'], Key = 'scripts/create_iceberg_table.py')
@@ -163,6 +163,7 @@ Resources:
       Environment:
         Variables:
           S3_BUCKET_NAME: !Ref S3
+
 
   #
   # Customer resource to execute the load CSV lambda function
@@ -244,7 +245,7 @@ Resources:
   #
   # Snowflake IAM Role
   # 
-  SnowflakeIAMRole:
+  SnowflakeGDCIAMRole:
       Type: AWS::IAM::Role
       Properties:
         AssumeRolePolicyDocument:

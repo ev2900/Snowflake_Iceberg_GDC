@@ -301,6 +301,6 @@ Outputs:
     Description: GLUE_CATALOG_ID when creating the catalog intergration
     Value: !Ref AWS::AccountId
 
-  Region:
+  GlueRegion:
     Description: GLUE_REGION AWS when creating the catalog intergration
     Value: !Ref AWS::Region

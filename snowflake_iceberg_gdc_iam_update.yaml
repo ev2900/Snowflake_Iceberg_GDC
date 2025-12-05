@@ -302,5 +302,5 @@ Outputs:
     Value: !Ref AWS::AccountId
 
   Region:
-    Description: AWS Region where this stack is deployed
+    Description: GLUE_REGION AWS when creating the catalog intergration
     Value: !Ref AWS::Region

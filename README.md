@@ -81,7 +81,7 @@ Begin by selecting the CloudFormation stack and then *Update stack*, *Make a dir
 
 Then select *Replace existing tempalte* and copy paste the following S3 URL 
 
-```https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iam_role_update.yaml```
+```https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iceberg_gdc_iam_update.yaml```
 
 On the next page you will be asked for several inputs. Run the following SQL in Snowflake to get each input paramater
 

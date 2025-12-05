@@ -33,3 +33,6 @@ jobs:
 
       - name: Upload snowflake_iam_role_update.yaml to S3
         run: aws s3 cp /home/runner/work/Snowflake_Iceberg_GDC/Snowflake_Iceberg_GDC/snowflake_iam_role_update.yaml s3://sharkech-public/misc-public/snowflake_iam_role_update.yaml        
+
+      - name: Upload create_iceberg_table.py to S3
+        run: aws s3 cp /home/runner/work/Snowflake_Iceberg_GDC/Snowflake_Iceberg_GDC/create_iceberg_table.py s3://sharkech-public/misc-public/create_iceberg_table.py      

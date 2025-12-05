@@ -23,7 +23,7 @@ Navigate to the Glue console ETL jobs page, select the *Create Iceberg Table* an
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/run_glue_job.png">
 
-This will create an Iceberg table named ```sampledataicebergtable``` registered with the Glue data catalog database ```iceberg```
+This will create an Iceberg table named ```sampledata_iceberg_gdc``` registered with the Glue data catalog database ```iceberg```
 
 ### Create an external volume in Snowflake
 
@@ -133,10 +133,10 @@ You can now create a table defition using the external volume and catalog interg
 
 ```
 -- Step 6 | Create the table in Snowflake
-CREATE OR REPLACE ICEBERG TABLE SAMPLEDATAICEBERGTABLE
+CREATE OR REPLACE ICEBERG TABLE SAMPLEDATA_ICEBERG_GDC
   EXTERNAL_VOLUME='EXT_VOL_GDC_S3'
   CATALOG='CAT_INT_GDC'
-  CATALOG_TABLE_NAME='sampledataicebergtable';
+  CATALOG_TABLE_NAME='sampledata_iceberg_gdc';
 
 -- Optional query the table
 SELECT * FROM SAMPLEDATAICEBERGTABLE LIMIT 10;

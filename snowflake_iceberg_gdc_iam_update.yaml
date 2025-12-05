@@ -283,7 +283,7 @@ Resources:
 Outputs:
   StorageAwsRoleArn:
     Description: STORAGE_AWS_ROLE_ARN when creating the external volume
-    Value: !GetAtt SnowflakeIAMRole.Arn
+    Value: !GetAtt SnowflakeGDCIAMRole.Arn
 
   StorageBaseUri:
     Description: Use this for STORAGE_BASE_URL when creating the external volume
@@ -295,8 +295,12 @@ Outputs:
 
   GlueAwsRoleArn:
     Description: GLUE_AWS_ROLE_ARN when creating the catalog intergration
-    Value: !GetAtt SnowflakeIAMRole.Arn
+    Value: !GetAtt SnowflakeGDCIAMRole.Arn
 
   GlueCatalogId:
     Description: GLUE_CATALOG_ID when creating the catalog intergration
     Value: !Ref AWS::AccountId
+
+  Region:
+    Description: AWS Region where this stack is deployed
+    Value: !Ref AWS::Region

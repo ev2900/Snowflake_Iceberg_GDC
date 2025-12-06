@@ -1,6 +1,6 @@
 # Read Iceberg tables from Glue Data Catalog (GDC) via. Snowflake
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-000-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-0000-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-000-green">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-57-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-0000-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-000-green">
 
 Snowflake can query (read only) Iceberg tables that are registered with the Glue Data Catalog and stored in S3 general purpose buckets. This integration works via. an external volume in Snowflake pointing to the S3 bucket with the Iceberg files and an external catalog in Snowflake pointing to Glue data catalog.
 
@@ -31,7 +31,7 @@ This will create an Iceberg table named ```sampledata_iceberg_gdc``` registered 
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cloudformation_outputs.png">
 
-Update the run the following SQL in Snowflake.  
+Update the run the following SQL in Snowflake.
 
 ```
 -- Step 1 | Create external volume to link S3 bucket with Snowflake
@@ -51,7 +51,7 @@ SHOW EXTERNAL VOLUMES;
 
 ### Create a catalog integration in Snowflake
 
-Update and run the following SQL in Snowflake. 
+Update and run the following SQL in Snowflake.
 
 The values of any of the <...> place holders can be found in the output section of the CloudFormation stack
 
@@ -64,7 +64,7 @@ CREATE or REPLACE CATALOG INTEGRATION CAT_INT_GDC
   GLUE_AWS_ROLE_ARN='<arn_snowflake_IAM_role>' -- ex. arn:aws:iam::535002871755:role/snowflake-iceberg-gdc-SnowflakeIAMRole-DyzKjswvzs7H
   GLUE_CATALOG_ID='<aws_account_id>' -- ex. 535002871755
   GLUE_REGION='<aws_region>' -- ex. us-east-1
-  ENABLED=TRUE; 
+  ENABLED=TRUE;
 
 SHOW CATALOG INTEGRATIONS;
 ```
@@ -79,7 +79,7 @@ Begin by selecting the CloudFormation stack and then *Update stack*, *Make a dir
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cf_update_1.png">
 
-Then select *Replace existing tempalte* and copy paste the following S3 URL 
+Then select *Replace existing tempalte* and copy paste the following S3 URL
 
 ```https://sharkech-public.s3.amazonaws.com/misc-public/snowflake_iceberg_gdc_iam_update.yaml```
 
@@ -102,7 +102,7 @@ WHERE "property" = 'GLUE_AWS_EXTERNAL_ID'
 -- Step 4 | Get GLUE_AWS_IAM_USER_ARN to update IAM role
 DESC CATALOG INTEGRATION CAT_INT_GDC;
 
-SELECT 
+SELECT
     "property",
     "property_value" as glue_aws_iam_user_arn
 FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
@@ -121,7 +121,7 @@ FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
 WHERE "property" = 'STORAGE_LOCATION_1';
 ```
 
-The parameters page on the CloudFormation stack update should look like this 
+The parameters page on the CloudFormation stack update should look like this
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cf_update_2.png">
 

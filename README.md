@@ -1,6 +1,6 @@
 # Read Iceberg tables from Glue Data Catalog (GDC) via. Snowflake
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-57-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-358-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-000-green">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-57-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-358-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-002-green">
 
 Snowflake can query (read only) Iceberg tables that are registered with the Glue Data Catalog and stored in S3 general purpose buckets. This integration works via. an external volume in Snowflake pointing to the S3 bucket with the Iceberg files and an external catalog in Snowflake pointing to Glue data catalog.
 

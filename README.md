@@ -31,7 +31,7 @@ This will create an Iceberg table named ```sampledata_iceberg_gdc``` registered 
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Snowflake_Iceberg_GDC/blob/main/READEME/cloudformation_outputs.png">
 
-Update the run the following SQL in Snowflake.
+Update and run the following SQL in Snowflake.
 
 ```
 -- Step 1 | Create external volume to link S3 bucket with Snowflake
